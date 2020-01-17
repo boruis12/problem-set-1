@@ -49,7 +49,7 @@ ols_biva <- lm(mpg~cyl, data = mtcars);tidy(ols_biva) %>% kable()
  + b. (5) Write the statistical form of the simple model in the previous question (i.e., what is the population
 regression function?).
 
-$mpg = \beta_0 + \beta_1cyl$ where $\beta_0 = 37.88$ and $\beta_1 = -2.88$ in this dataset.
+$mpg = \beta_0 + \beta_1cyl + \epsilon$ where $\beta_0 = 37.88$ and $\beta_1 = -2.88$ in this sample
 
   + c. (10) Add vehicle weight (wt) to the specification. Report the results and talk about differences in
 coefficient size, effects, etc.
@@ -68,7 +68,7 @@ ols_biva %>% glance() %>%
   + d. (10) Interact weight and cylinders and report the results. What is the same or different? What are we
 theoretically asserting by including a multiplicative interaction term in the function?
 
-Aftering including an interaction term between weight and cylinders into our model, the magnitude of coefficients on cyl and wt increases while their estimates are still negative and statistically significant.The interaction term is also statistically significant at 0.05 level. The constant term also increases. Including the interaction term increases the adjusted-$R^2$ by a small amount (~0.01).
+Aftering including an interaction term between weight and cylinders into our model, the magnitude of coefficients on cyl and wt increases while their estimates are still negative and statistically significant.The interaction term is also statistically significant at 0.05 level. The constant term also increases. Including the interaction term increases the adjusted-$R^2$ only by a small amount (~0.01).
 
 More importantly, the interpretions of our coefficients on cyl and wy also changed. By including the interaction term in our function, we are theorectically asserting that the effect of cyl (or wt) on mpg is conditional on the value of wt (or cyl). In other words, the estimated effect of cyl and wt on mpg is no longer constant.
 
@@ -86,7 +86,7 @@ glance(ols_inter)[, 1:6] %>% kable()
   + a. (10) Fit a polynomial regression, predicting wage as a function of a second order polynomial for age.
 Report the results and discuss the output (hint: there are many ways to fit polynomials in R, e.g., I, ˆ, poly(), etc.).
 
-As shown below, the regression coefficients for age and $age^2$ are 5.29 and -0.05. As both estimates are significant at 0.01 level, it implies that the effect of age on wage level is constantly changing as age increases. The negative sign of the quadratic term indicates a concave relationship between age and wage. That is, there is a maximum amount of wage that one can earn during his/her lifetime.
+As shown below, the regression coefficients for age and $age^2$ are 5.29 and -0.05. As both estimates are statistically significant at 0.01 level, it implies that the effect of age on wage level is constantly changing as age increases. The negative sign of the quadratic term indicates a concave relationship between age and wage. That is, there is a maximum amount of wage that one can earn during his/her lifetime.
 
 ```{r}
 polynomial <- lm(wage ~ age + I(age^2), data = wage_data);tidy(polynomial) %>% kable()
@@ -110,4 +110,4 @@ In the above figure, we can see that the regression line is concave instead of a
   + d. (10) How does a polynomial regression differ both statistically and substantively from a linear regression
 (feel free to also generalize to discuss broad differences between non-linear and linear regression)?
 
-While a polynomial regression is linear in the parameters, the underlying relationship is polynomial (non-linear). Linear regression, on the contrary, assumes that the underlying relationship is linear. Also, the effect of independent variable on outcome is constant in a linear regression but is constantly changing in a polynomial regression. Also, while polynomial (non-linear) regression is more flexible than linear and can fit into a variety of curves, its estimates are more complex to interpret. 
+While a polynomial regression is linear in the parameters, the underlying relationship is polynomial. Linear regression, on the contrary, assumes that the underlying relationship is linear. Also, the effect of independent variable on outcome is fixed in a linear regression but is constantly changing in a polynomial regression. Polynomial (non-linear) regression is more flexible than linear and can fit into a variety of curves, but its estimates are more complex to interpret.  

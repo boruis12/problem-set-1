@@ -33,7 +33,7 @@ Moreover, the applications of the two types of machine learning in solving real 
 
 It is also important to address the deficiencies associated with each of the two types of machine learning. One of the biggest challenges of unsupervised machine learning is the difficulty to measure the accuracy of its algorithm, as there is training dataset that one can easily compare its prediction with target value and readjust its model according. Sometimes additional work may be required in order to acquire meaningful results. Therefore, unsupervised machine learning can be less predictable than supervised machine learning. While accuracy measurements are extremely helpful in model evaluation, labeled data often require enomorous amount of human resources and are still difficult to find in many research or industrial fields. Accesses to unlabeled data are much more attainable, which leads to huge demand for unsupervised machine learning.   
 
-**Linear Regression Regression (35 points)**
+**Linear Regression (35 points)**
 
 #### 1. Using the mtcars dataset in R (e.g., run names(mtcars)), answer the following questions:
 
@@ -54,7 +54,7 @@ $mpg = \beta_0 + \beta_1cyl$ where $\beta_0 = 37.88$ and $\beta_1 = -2.88$ in th
   + c. (10) Add vehicle weight (wt) to the specification. Report the results and talk about differences in
 coefficient size, effects, etc.
 
-After adding vehicle weight (wt) to the specification, the magnitude of the coefficient on cyl decreases by 1.37 but the coefficient still remains negative and statistically significant. More importantly, -1.5 now becomes the estimate effect of cyl on mpg when holding wt constant. The intercept also increases from 37.88 to 39.69. The coefficient on our new regressor, vehicle weight, is negative and statistically significant. We can also find that the adjusted-$R^2$ also increased after adding vechile weight into our model. 
+After adding vehicle weight (wt) to the specification, the magnitude of the coefficient on cyl decreases by 1.37 but the coefficient still remains negative and statistically significant. More importantly, -1.5 now becomes the estimate effect of cyl on mpg when holding wt constant. The intercept also increases from 37.88 to 39.69. The coefficient on our new regressor, vehicle weight, is negative and statistically significant. We can also find that the adjusted-$R^2$ also increased after adding vechile weight into our model, indicating that more variance for our dependent variable (mpg) is explained by the independent variables after controling for wt. 
 
 ```{r}
 ols_multi <- lm(mpg~cyl + wt, data = mtcars);tidy(ols_multi) %>% kable()
@@ -110,4 +110,4 @@ In the above figure, we can see that the regression line is concave instead of a
   + d. (10) How does a polynomial regression differ both statistically and substantively from a linear regression
 (feel free to also generalize to discuss broad differences between non-linear and linear regression)?
 
-While a polynomial regression is linear in the parameters, the underlying relationship is polynomial (non-linear). The effect of independent variable on outcome is constant in a linear regression but is not fixed in a polynomial regression. Also, while polynomial (non-linear) regression is more flexible than linear and can fit into a variety of curves, its estimates are more complex to interpret. 
+While a polynomial regression is linear in the parameters, the underlying relationship is polynomial (non-linear). Linear regression, on the contrary, assumes that the underlying relationship is linear. Also, the effect of independent variable on outcome is constant in a linear regression but is constantly changing in a polynomial regression. Also, while polynomial (non-linear) regression is more flexible than linear and can fit into a variety of curves, its estimates are more complex to interpret. 
